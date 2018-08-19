@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'zh-CN',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -208,6 +208,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // Laravel Debugbar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
