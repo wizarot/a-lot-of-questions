@@ -114,10 +114,10 @@ class QuestionsController extends Controller
         return Admin::grid(Questions::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-            $grid->column('content','内容')->display(function($text) {
-                return str_limit($text, 30, '...');
-            });
             $grid->column('category.title','题目分类');
+            $grid->column('content','内容')->display(function($text) {
+                return str_limit($text, 50, '...');
+            });
 
             $grid->created_at('建立时间');
             $grid->updated_at('修改时间');
