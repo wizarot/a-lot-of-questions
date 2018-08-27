@@ -16,4 +16,16 @@ class Category extends Model
     {
         return $this->hasMany(Questions::class,'category_id');
     }
+
+    /**
+     * Get options for Select field in form.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public static function selectOptions()
+    {
+        $options = (new static())->buildSelectOptions([],0,'━');
+
+        return collect($options)->prepend('Root', 0)->all();
+    }
 }

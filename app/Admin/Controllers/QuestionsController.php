@@ -42,8 +42,8 @@ class QuestionsController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Detail');
-            $content->description('description');
+            $content->header('详情');
+            $content->description('');
 
             $content->body(Admin::show(Questions::findOrFail($id), function (Show $show) {
 
@@ -81,8 +81,8 @@ class QuestionsController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Edit');
-            $content->description('description');
+            $content->header('编辑');
+            $content->description('');
 
             $content->body($this->form()->edit($id));
         });
@@ -97,8 +97,8 @@ class QuestionsController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Create');
-            $content->description('description');
+            $content->header('新建');
+            $content->description('');
 
             $content->body($this->form());
         });
@@ -138,12 +138,12 @@ class QuestionsController extends Controller
             $form->display('id', 'ID');
             $form->select('category_id', '题目类型')->options(Category::selectOptions());
             $form->ckeditor('content', '题目内容');
-            $form->ckeditor('tips', '提示信息');
+            $form->ckeditor('tips', '解题思路');
             $form->hasMany('answer', '正确答案', function (Form\NestedForm $form) {
                 $form->ckeditor('content','答案');//->rules('required');
             });
             $form->hasMany('distractor', '干扰项', function (Form\NestedForm $form) {
-                $form->text('content','干扰项');//->rules('required');
+                $form->ckeditor('content','干扰项');//->rules('required');
             });
 
 
