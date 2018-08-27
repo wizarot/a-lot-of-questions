@@ -25,8 +25,8 @@ class QuestionsController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Index');
-            $content->description('description');
+            $content->header('题目');
+            $content->description('题目管理');
 
             $content->body($this->grid());
         });
@@ -116,6 +116,8 @@ class QuestionsController extends Controller
             $grid->id('ID')->sortable();
             $grid->column('category.title','题目分类');
             $grid->column('content','内容')->display(function($text) {
+                return $text;
+                $text = strip_tags($text);
                 return str_limit($text, 50, '...');
             });
 
@@ -135,10 +137,10 @@ class QuestionsController extends Controller
 
             $form->display('id', 'ID');
             $form->select('category_id', '题目类型')->options(Category::selectOptions());
-            $form->text('content', '题目内容');
-            $form->text('tips', '提示信息');
+            $form->ckeditor('content', '题目内容');
+            $form->ckeditor('tips', '提示信息');
             $form->hasMany('answer', '正确答案', function (Form\NestedForm $form) {
-                $form->text('content','答案');//->rules('required');
+                $form->ckeditor('content','答案');//->rules('required');
             });
             $form->hasMany('distractor', '干扰项', function (Form\NestedForm $form) {
                 $form->text('content','干扰项');//->rules('required');
