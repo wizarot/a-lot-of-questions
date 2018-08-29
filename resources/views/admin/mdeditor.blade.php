@@ -3,8 +3,8 @@
  * @author will <wizarot@gmail.com>
  * @link http://wizarot.me/
  *
- * Date: 2018/8/23
- * Time: 下午4:59
+ * Date: 2018/8/29
+ * Time: 下午1:57
  */
 ?>
 
@@ -16,7 +16,7 @@
 
         @include('admin::form.error')
 
-        <textarea class="form-control ckeditor {{ $class }} cke_source cke_reset cke_enable_context_menu" name="{{$name}}" placeholder="{{ $placeholder }}" {!! $attributes !!} >{{ old($column, $value) }}</textarea>
+        <textarea id="editormd1" class="form-control editormd {{ $class }}" name="{{$name}}"  placeholder="{{ $placeholder }}" {!! $attributes !!} >{{ old($column, $value) }}</textarea>
 
         @include('admin::form.help-block')
 

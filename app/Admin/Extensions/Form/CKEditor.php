@@ -15,7 +15,9 @@ class CKEditor extends Field
 
     public function render()
     {
-        $this->script = "$('textarea.{$this->getElementClassString()}').ckeditor();";
+//        $this->script = "$('textarea.{$this->getElementClassString()}').ckeditor();";
+        // 用这个解决新增ckeditor不生效的问题.
+        $this->script = "$('textarea.ckeditor').ckeditor();";
 
         return parent::render();
     }
